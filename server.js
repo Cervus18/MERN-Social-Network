@@ -5,6 +5,9 @@ const app = express()
 // Connect DB
 connectDB()
 
+// Init middleware (allows us to get json data when posting to a route)
+app.use(express.json({extended : false}))
+
 // Define routes
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
