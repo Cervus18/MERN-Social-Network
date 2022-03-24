@@ -32,12 +32,14 @@ const Register = ({ setAlert, register, isAuthenticated}) => {
   return (
     <>
       <h1 className="large text-primary">Sign Up</h1>
+    
+      <form style={{"padding":"16px","borderRadius":"16px","background":"#fff","boxShadow":"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}} className="form" onSubmit={(e) => onSubmit(e)}>
       <p className="lead">
         <i className="fas fa-user"></i> Create Your Account
       </p>
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
-        <div className="form-group">
+      <div className="form-group">
           <input
+            style={{"background":"#f7f7f7"}}
             type="text"
             placeholder="Name"
             name="name"
@@ -48,6 +50,7 @@ const Register = ({ setAlert, register, isAuthenticated}) => {
         </div>
         <div className="form-group">
           <input
+            style={{"background":"#f7f7f7"}}
             type="email"
             placeholder="Email Address"
             value={email}
@@ -55,13 +58,11 @@ const Register = ({ setAlert, register, isAuthenticated}) => {
             name="email"
             
           />
-          <small className="form-text">
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
-          </small>
+  
         </div>
         <div className="form-group">
           <input
+            style={{"background":"#f7f7f7"}}
             type="password"
             placeholder="Password"
             name="password"
@@ -72,6 +73,7 @@ const Register = ({ setAlert, register, isAuthenticated}) => {
         </div>
         <div className="form-group">
           <input
+            style={{"background":"#f7f7f7"}}
             type="password"
             placeholder="Confirm Password"
             name="password2"

@@ -5,26 +5,47 @@ const auth  = require('../../middleware/auth')
 const Post = require('../../models/post');
 const User = require('../../models/user');
 const Profile = require('../../models/profile')
+const {cloudinary} = require('../../utils/cloudinary')
 
 // @route    POST api/postes
 // @desc     Create a post
 // @access   Public
-router.post('/',auth,check('text','text is required').notEmpty(),async (req,res)=> {
+router.post('/',auth,/*check('text','text is required').notEmpty(),*/async (req,res)=> {
 
-    const errors = validationResult(req);
+    /*const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
-    }
+    }*/
     
     try {
+        const fileStr = req.body.previewSource
+        let newPost
         const user = await User.findById(req.user.id).select('-password');
-  
-        const newPost = new Post({
-          text: req.body.text,
-          name: user.name,
-          avatar: user.avatar,
-          user: req.user.id
-        });
+        if(fileStr){
+          let image1 = await cloudinary.v2.uploader.upload(fileStr, {folder: 'posts'})
+          let image =  {url:image1.url, public_id: image1.public_id}
+           newPost = new Post({
+            text: req.body.text,
+            image,
+            emoji:req.body.emoji,
+            name: user.name,
+            avatar: user.avatar,
+            user: req.user.id
+          });
+        }else{
+          image= {}
+          newPost = new Post({
+            text: req.body.text,
+            image,
+            emoji:req.body.emoji,
+            name: user.name,
+            avatar: user.avatar,
+            user: req.user.id
+          });
+        }
+        
+
+      
   
         const post = await newPost.save();
   
@@ -77,6 +98,13 @@ router.get('/:id', auth, async (req, res) => {
 router.delete('/:id',auth, async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
+
+      //Remove image from cloudinary
+      if(post.image){
+        const image_public_id = post.image.public_id
+        cloudinary.v2.uploader.destroy(image_public_id)
+      }
+      
   
       if (!post) {
         return res.status(404).json({ msg: 'Post not found' });
@@ -222,6 +250,9 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
     try {
       const user = await Profile.findOne({user: req.user.id})
       const followings = user.followings
+      let user1 = await User.findOne({_id:req.user.id})
+      let userr={user: user1._id, _id: user1._id}
+      followings.push(userr)
 
       let posts = []
       
@@ -229,6 +260,8 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
         const followingPosts =await Post.find({user: followings[i].user})
         posts.push(...followingPosts)
       }
+
+
 
       res.json(posts.reverse())
       

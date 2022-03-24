@@ -9,7 +9,7 @@ const CommentForm = ({postId}) => {
 
   return (
     <div className="post-form">
-        <div className="bg-primary p">
+        <div className="bg-primary p" style={{"borderRadius":"8px"}}>
         <h3>Leave a comment</h3>
         </div>
         <form className="form my-1" onSubmit={ e=>{
@@ -24,6 +24,7 @@ const CommentForm = ({postId}) => {
             cols="30"
             rows="5"
             placeholder="Comment on this post"
+            style={{"border":"1px solid #ddd"}}
             required
         ></textarea>
         <input type="submit" className="btn btn-dark my-1" value="Submit" />

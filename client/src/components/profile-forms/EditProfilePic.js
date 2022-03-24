@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { updateAvatar } from '../../actions/auth'
 import { useDispatch } from 'react-redux'
 import ButtonSpinner from '../layout/ButtonSpinner'
+import defaultAvatar from '../../img/defaultAvatar.png'
 
 const EditProfilePic = () => {
   
@@ -49,7 +50,7 @@ const EditProfilePic = () => {
   return (
     <form style={{"display":"flex", "flexDirection":"column", "alignItems":"center"}} onSubmit={(e)=>handleSubmitFile(e)}>
         <div className="profile-img-wrapper">
-            <img className="round-img" src={ !previewSource ? profilePic : previewSource} />
+            <img className="round-img" src={ !previewSource ? (profilePic? profilePic.url:defaultAvatar) : previewSource} />
             <i className="fa-solid fa-camera" onClick={ handleInputClick}></i>
         </div>
         <div style={{"display":"flex", "width":"100%", "justifyContent":"flex-end", "borderTop": "1px #ccc solid"}}>

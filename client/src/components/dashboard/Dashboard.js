@@ -1,18 +1,25 @@
 import React , {Fragment, useEffect} from 'react'
 import {connect} from 'react-redux'
-import { getCurrentProfile } from '../../actions/profile'
+import { getCurrentProfile} from '../../actions/profile'
 import Spinner from '../layout/Spinner'
 import { Link } from 'react-router-dom'
 import DashboardActions from './DashboardActions'
 import Experience from './Experience'
 import Education from './Education'
+import defaultAvatar from '../../img/defaultAvatar.png'
+
+
+
 /*import { deleteAccount } from '../../actions/profile'*/
 
 const Dashboard = ({getCurrentProfile, auth: {user}, profile: {profile, loading}, /*deleteAccount*/}) => {
   
   useEffect(()=>{
     getCurrentProfile()
+
+
   },[getCurrentProfile])
+
 
   return loading && profile === null ? <Spinner/>:
   <Fragment>
@@ -23,8 +30,13 @@ const Dashboard = ({getCurrentProfile, auth: {user}, profile: {profile, loading}
    
    {profile !== null ? 
    (<Fragment>
-     <img className='round-img' style={{"width":"200px", "height":"200px", "marginBottom":"1rem", "border":"2px solid #1877f2"}} src={user.avatar} alt="" />
+     <Link to={`/profile/${user._id}`}>
+      <img className='round-img' style={{"width":"200px", "height":"200px", "marginBottom":"1rem", "border":"2px solid #1877f2"}} src={user.avatar? user.avatar.url: defaultAvatar} alt="" />
+      </Link> 
+     
      <DashboardActions/>
+   
+
      <Experience experience={profile.experience}/>
      <Education education={profile.education}/>
      {/*<div className="my-2">
@@ -37,6 +49,8 @@ const Dashboard = ({getCurrentProfile, auth: {user}, profile: {profile, loading}
      <p>You have not yet setup a profile, please add some info</p>
      <Link to="/create-profile" className="btn btn-primary my-1">Create Profile</Link>
    </Fragment>)}
+   
+   
   </Fragment>
 }
 

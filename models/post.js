@@ -7,13 +7,19 @@ const PostSchema = new Schema({
   },
   text: {
     type: String,
-    required: true
+  },
+  image:{
+    type: Object,
+  },
+
+  emoji:{
+    type:Object
   },
   name: {
     type: String
   },
   avatar: {
-    type: String
+    type: Object
   },
   likes: [
     {
@@ -31,12 +37,13 @@ const PostSchema = new Schema({
         type: String,
         required: true
       },
+    
 
       name: {
         type: String
       },
       avatar: {
-        type: String
+        type: Object
       },
       date: {
         type: Date,

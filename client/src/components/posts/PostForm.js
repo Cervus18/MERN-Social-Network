@@ -45,7 +45,7 @@ const PostForm = ({addPost,text,setText}) => {
     }
  }
 
- const handleSubmitFile = (e) => {
+ /*const handleSubmitFile = (e) => {
      e.preventDefault()
      if(!previewSource) return
      uploadImage(previewSource)
@@ -55,7 +55,7 @@ const PostForm = ({addPost,text,setText}) => {
  const uploadImage = async (base64EncodedImage) => {
 
     console.log(base64EncodedImage)
- }
+ }*/
 
 
    
@@ -65,7 +65,7 @@ const PostForm = ({addPost,text,setText}) => {
     <div className="post-form">
       <div className="avatar-wrapper" >
         <div style={{"display": "flex","alignItems":"center"}}>
-         <img src={avatar? avatar:defaultAvatar} alt="" className="round-img" style={{"height":"40px","width":"40px","border":"1px solid #ccc" }}/>
+         <img src={avatar? avatar.url:defaultAvatar} alt="" className="round-img" style={{"height":"40px","width":"40px","border":"1px solid #ccc" }}/>
         <p><strong>{name}</strong></p>
         </div>
         <div className="emojis">
@@ -81,7 +81,7 @@ const PostForm = ({addPost,text,setText}) => {
         <form className="form my-1" onSubmit={ e=>{
             e.preventDefault()
             setDisable(true)
-            addPost({text})
+             addPost({text,emoji,previewSource})
             setText('')
         }}>
           {emoji && <div className='emoji' ><img src={emoji.emojiIcon} style={{"width":"20px","marginRight":"8px"}}/><strong>{emoji.emojiText}</strong><i className='fas fa-times' onClick={()=>setEmoji()}></i></div>}
@@ -96,7 +96,7 @@ const PostForm = ({addPost,text,setText}) => {
           ></textarea>
           {previewSource&& <div style={{"position":"relative", "width":"270px"}}><img className='preview-post-img' src={previewSource}></img><i onClick={()=>{setPreviewSource(); hiddenInputRef.current.value=null}} className='fas fa-times cancel-img'></i></div>}
           <div style={{"borderTop":"1px solid #ccc"}}>
-           <button  type="submit" onClick={()=> {if(text) {setLoading(true)}} } disabled={disable} className={loading? "btn btn-dark my-1 save": "btn btn-dark my-1"} >Post{loading && <ButtonSpinner bg={"#343a40"}/>}</button>
+           <button  type="submit" onClick={()=> {if(text|| previewSource) {setLoading(true)}} } disabled={disable} className={loading? "btn btn-dark my-1 save": "btn btn-dark my-1"} >Post{loading && <ButtonSpinner bg={"#343a40"}/>}</button>
            <span className='btn btn-success' onClick={ handleInputClick}><i className="fa-solid fa-image" ></i></span>
            <input value={fileInputState} ref={hiddenInputRef}  type="file" name="image"  style={{display: 'none'}} onChange={(e)=>handleFileInputChange(e)} />
            {(previewSource || text) && <span className='btn btn-danger' onClick={()=> {setPreviewSource(); setText(''); setEmoji(); hiddenInputRef.current.value=null  } }>Cancel</span>}

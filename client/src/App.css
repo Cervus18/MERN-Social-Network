@@ -263,6 +263,8 @@ img {
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
+  outline: none;
+  border-radius: 8px;
 }
 
 .form input[type='submit'],
@@ -318,12 +320,13 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 2rem;
+  padding: 0.3rem 2rem;
   position: fixed;
   z-index: 1;
   width: 100%;
   top: 0;
   border-bottom: solid 1px var(--primary-color);
+  height: 60px;
   
 }
 
@@ -373,13 +376,12 @@ button {
   padding: 1rem;
   line-height: 1.8;
   /*margin-bottom: 1rem;*/
-  border-bottom: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-.profile:last-child{
-  border-bottom: 1px;
-  border: #ccc solid 1px;
-}
+
 
 /* Profile Page */
 .profile-grid {
@@ -484,7 +486,7 @@ button {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
-  align-items: center;
+  /*align-items: center;*/
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 8px;
   border-left:0;
@@ -515,7 +517,7 @@ button {
 
 .search{
   width:40%;
-  height:100%;
+  height:34px;
   background-color: #fff;
   border-radius: 30px;
   display: flex;
@@ -540,6 +542,7 @@ button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   cursor: pointer;
+  height: 100%;
 
 
  
@@ -914,3 +917,23 @@ button {
 .emoji i:hover{
   background-color: rgba(0, 0, 0, 0.329);
 }
+
+.btn-success-v2{
+  background-color:#03854929 ;
+  border: 1px solid #038521;
+  color: #038521
+}
+.btn-primary-v2{
+  background-color:#70b5f933;
+  border: 1px solid #0a66c2;
+  color: #0a66c2
+}
+
+
+/*"background":"#f9709733" , "border":"1px solid #d32e5d", "color":"#d32e5d"*/
+.btn-danger-v2{
+  background-color: #f9709733;
+  border: 1px solid #d32e5d;
+  color: #d32e5d
+}
+

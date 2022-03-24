@@ -1,30 +1,39 @@
-import React, {Fragment} from 'react'
+import React, {Fragment,useState} from 'react'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
 import { addLike, removeLike, deletePost } from '../../actions/post'
 import defaultAvatar from '../../img/defaultAvatar.png'
+import Modal from '../../components/layout/Modal'
 
-const PostItem = ({auth,addLike, removeLike, deletePost, post: {_id, text, name, avatar, user, likes, comments, date}, showActions}) => {
+const PostItem = ({auth,addLike, removeLike, deletePost, post: {_id, text,emoji,image, name, avatar, user, likes, comments, date}, showActions}) => {
+
+  const [showModal,setShowModal]=useState(false)
   return (
     <div className="post bg-white p-1 my-1">
     <div>
       <Link to={`/profile/${user}`}>
         <img
+        style={{"width":"60px","height":"60px","marginTop":"20px"}}
           className="round-img"
-          src={avatar? avatar:defaultAvatar}
+          src={avatar? avatar.url:defaultAvatar}
           alt=""
         />
         <h4>{name}</h4>
       </Link>
     </div>
     <div>
-      <p className="my-1">
-        {text}
-      </p>
        <p className="post-date">
           Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
       </p>
+      {emoji&& <div style={{"display":"flex","alignItems":"center","border":"1px solid #ddd","background":"#f0f2f5","borderRadius":"8px","padding":"9px"}}>
+         <img src={emoji.emojiIcon} alt="" style={{"width":'20px', "marginRight":"8px"}}/>{name} is <strong style={{"marginLeft":"5px"}}>{ emoji.emojiText}</strong>
+      </div>}
+      <p className="my-1">
+        {text}
+      </p>
+      {image && <img onClick={()=>setShowModal(true)} src={image.url} style={{"width":"200px", "border":"1px solid #ccc","borderRadius":"8px","display":"block","marginBottom":"17px"}}/>}
+      {showModal && <Modal isOpen={setShowModal}><img src={image.url} style={{"width":"100%"}}/></Modal>}
      
     {showActions && <Fragment>
       <button onClick={ () => addLike(_id)} className="btn" style={{"background":"#03854929" , "border":"1px solid #038521", "color":"#038521"}}>

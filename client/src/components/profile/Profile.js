@@ -30,7 +30,7 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link  onClick={goToPreviousPath} className="btn btn-light">
+          <Link  onClick={goToPreviousPath} className="btn btn-light"  style={{"background":"#70b5f933" , "border":"1px solid #0a66c2", "color":"#0a66c2"}}>
             Go Back 
           </Link>
           {auth.isAuthenticated &&
@@ -43,7 +43,7 @@ const Profile = ({
             <div className="profile-grid my-1">
                 <ProfileTop profile={profile}/>
                 <ProfileAbout profile={profile}/>
-                <div className="profile-exp bg-white p-2">
+                <div className="profile-exp bg-white p-2" style={{"borderRadius":"8px","boxShadow":"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
                     <h2 className="text-primary">Experience</h2>
                     {profile.experience.length > 0 ? (
                     <Fragment>
@@ -53,7 +53,7 @@ const Profile = ({
                     </Fragment>
                     ):(<h4>No experiences mentioned</h4>)}
                 </div>
-                <div className="profile-edu bg-white p-2">
+                <div className="profile-edu bg-white p-2"  style={{"borderRadius":"8px","boxShadow":"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
                     <h2 className="text-primary">Education</h2>
                     {profile.education.length > 0 ? (
                     <Fragment>

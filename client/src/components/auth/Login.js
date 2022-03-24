@@ -26,11 +26,12 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <>
       <h1 className="large text-primary">Sign In</h1>
-      <p className="lead"><i className="fas fa-user"></i> Sign Into Your Account</p>
-      <form className="form" onSubmit={e=>onSubmit(e)}>
-        
+      
+      <form style={{"padding":"16px","borderRadius":"16px","background":"#fff","boxShadow":"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}} className="form" onSubmit={e=>onSubmit(e)}>
+        <p className="lead"><i className="fas fa-user"></i> Sign Into Your Account</p>
         <div className="form-group">
-          <input type="email" placeholder="Email Address" value={email} onChange={e=> onChange(e)} name="email" required />
+            
+          <input style={{"background":"#f7f7f7"}}  type="email" placeholder="Email Address" value={email} onChange={e=> onChange(e)} name="email" required />
         </div>
         <div className="form-group">
           <input
@@ -39,6 +40,7 @@ const Login = ({ login, isAuthenticated }) => {
             name="password"
             minLength="6"
             value={password} onChange={e=> onChange(e)}
+            style={{"background":"#f7f7f7"}}
           />
         </div>
        

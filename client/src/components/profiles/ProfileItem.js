@@ -23,13 +23,13 @@ const ProfileItem = ({profile:
 
   return (
     <div className="profile bg-white">
-        <img src={avatar? avatar: defaultAvatar} alt="" className={loggedUserId !== _id ? 'round-img':'round-img my-profile'}/>
+        <img src={avatar? avatar.url: defaultAvatar} alt="" className={loggedUserId !== _id ? 'round-img':'round-img my-profile'}/>
         <div>
             <h2>{name}</h2>
             <p>{status} {company && <span>at {company}</span>}</p>
             <p className="my-1">{location && <span><i style={{color:"#f34f4f"}} className="fa-solid fa-location-dot"></i>{' '}{location}</span>}</p>
-            <Link to={`/profile/${_id}`} className="btn btn-primary">{loggedUserId !== _id  ? "View Profile":"View My Profile"}</Link>
-            {(isAuthenticated && loggedUserId !== _id ) && <button onClick={()=>{dispatch(followOrUnfollow(_id))}} className={`btn ${!isFollowed? 'btn-success': 'btn-danger'}`}>{isFollowed? 'Unfollow': 'Follow'}</button>}
+            <Link to={`/profile/${_id}`} className="btn btn-primary-v2">{loggedUserId !== _id  ? "View Profile":"View My Profile"}</Link>
+            {(isAuthenticated && loggedUserId !== _id ) && <button onClick={()=>{dispatch(followOrUnfollow(_id))}} className={`btn ${!isFollowed? 'btn-success-v2': 'btn-danger-v2'}`}>{isFollowed? 'Unfollow': 'Follow'}</button>}
         </div>
         <ul>
             {skills.slice(0,4).map((skill, index) => (

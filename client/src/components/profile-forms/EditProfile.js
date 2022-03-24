@@ -70,7 +70,7 @@ const EditProfile = ({profile:{profile, loading},createProfile, getCurrentProfil
         <i className="fas fa-user"></i> Let's get some information to make your
         profile stand out
       </p>
-      <small>* = required field</small>
+      <small style={{"color":"red"}}>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <select name="status" value={status} onChange={(e) => onChange(e)}>
@@ -160,7 +160,7 @@ const EditProfile = ({profile:{profile, loading},createProfile, getCurrentProfil
         </div>
 
         <div className="my-2">
-          <button
+          <button style={{"background":"#70b5f933" , "border":"1px solid #0a66c2", "color":"#0a66c2"}}
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
             type="button"
             className="btn btn-light"
@@ -230,7 +230,7 @@ const EditProfile = ({profile:{profile, loading},createProfile, getCurrentProfil
         )}
 
         <input type="submit" value="Save" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
+        <Link className="btn btn-light my-1" to="/dashboard"  style={{"background":"#03854929" , "border":"1px solid #038521", "color":"#038521"}}>
           Go Back
         </Link>
       </form>

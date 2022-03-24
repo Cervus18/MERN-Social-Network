@@ -6,7 +6,7 @@ const [query,setQuery] = useState("")
 
   return (
     <div className='search'>
-        <input type="text" value={query} onChange={(e)=> setQuery(e.target.value)} />
+        <input placeholder='Search for developers like you' type="text" value={query} onChange={(e)=> setQuery(e.target.value)} />
         <Link to={`/profiles/${query}`} style={{"padding":"0", "margin":"0"}} onClick={(e)=> { (query==="" && e.preventDefault()) ; setQuery("")}}><button>Search</button></Link>
     </div>
   )

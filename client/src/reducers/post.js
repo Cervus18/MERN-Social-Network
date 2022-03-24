@@ -1,4 +1,4 @@
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST, CLEAR_POST, ADD_COMMENT, REMOVE_COMMENT } from "../actions/types"
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST, CLEAR_POST,CLEAR_POSTS, ADD_COMMENT, REMOVE_COMMENT } from "../actions/types"
 
 const initalState = {
     posts : [],
@@ -54,6 +54,12 @@ export default function (state = initalState, action){
                 post:null,
                 loading:true
             }
+       case CLEAR_POSTS:
+            return {
+                    ...state,
+                    posts:[],
+                    loading:true
+                }
         case ADD_COMMENT:
             return {
                 ...state,

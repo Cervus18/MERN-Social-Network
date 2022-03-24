@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/auth'
 import Searchbar from './Searchbar'
+import logo from '../../img/logo.png'
+import { useSelector } from 'react-redux'
+
 const Navbar = ({auth: { isAuthenticated, loading}, logout}) => {
+  
+  const profile = useSelector(state=> state.profile.profile)
+
   const authLinks = (
     <ul>
       {/*<li>
         <Link to="/profiles">Developers</Link>
   </li>*/}
-     <li>
+     {profile && <li>
         <Link to="/posts">Posts</Link>
-     </li>
+     </li>}
      <li>
         <Link to="/dashboard"> <i className="fas fa-user" />{' '} <span className="hide-sm">Dashboard</span></Link>
      </li>
@@ -41,7 +47,7 @@ const Navbar = ({auth: { isAuthenticated, loading}, logout}) => {
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/" ><i className="fas fa-code"></i> DevConnector</Link>
+        <Link to="/" ><span style={{"display":"flex"}}><img src={logo} style={{"width":"40px","marginRight":"8px"}} alt="" /> <span>DevConnector</span></span></Link>
       </h1>
       <Searchbar/>
      {!loading  &&  (<>{isAuthenticated ? authLinks: guestLinks}</>)}

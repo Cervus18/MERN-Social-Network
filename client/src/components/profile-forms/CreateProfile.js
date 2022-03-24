@@ -143,6 +143,7 @@ const CreateProfile = ({createProfile, history}) => {
 
         <div className="my-2">
           <button
+            style={{"background":"#70b5f933" , "border":"1px solid #0a66c2", "color":"#0a66c2"}}
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
             type="button"
             className="btn btn-light"
@@ -211,8 +212,8 @@ const CreateProfile = ({createProfile, history}) => {
           </Fragment>
         )}
 
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
+        <input type="submit" value="Save" className="btn btn-primary my-1" />
+        <Link className="btn btn-light my-1" to="/dashboard" style={{"background":"#03854929" , "border":"1px solid #038521", "color":"#038521"}}>
           Go Back
         </Link>
       </form>

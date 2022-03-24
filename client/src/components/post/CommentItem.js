@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
 import { deleteComment } from '../../actions/post'
+import defaultAvatar from '../../img/defaultAvatar.png'
 
 const CommentItem = ({deleteComment ,postId,comment: {_id, text, name, avatar, user, date}, auth}) => {
   return (
@@ -11,7 +12,7 @@ const CommentItem = ({deleteComment ,postId,comment: {_id, text, name, avatar, u
             <Link to={`/profile/${user}`}>
               <img
                 className="round-img"
-                src={avatar}
+                src={avatar?avatar.url:defaultAvatar}
                 alt=""
               />
               <h4>{name}</h4>

@@ -21,17 +21,19 @@ const  ProfileTop = ({profile:{
   const isFollowed = followings.some((userObject)=> userObject.user === _id)
 
   return (
-    <div className="profile-top bg-primary p-2">
+    <div className="profile-top p-2" style={{"background":"#6b5fc6","color":"#fff","borderRadius":"8px","boxShadow":"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
+      
       <img
         className="round-img my-1"
         src={avatar? avatar: defaultAvatar}
         alt=""
       />
+     
       <h1 className="large">{name}</h1>
       <p className="lead">{status} {company && <span>at {company}</span>}</p>
       <p>{location && <span><i  className="fa-solid fa-location-dot"></i>{' '}{location}</span>}</p>
       <br/>
-      {(isAuthenticated && loggedUserId !== _id ) && <button onClick={()=>{dispatch(followOrUnfollow(_id))}} className={`btn ${!isFollowed? 'btn-success': 'btn-danger'}`}>{isFollowed? 'Unfollow': 'Follow'}</button>}
+      {(isAuthenticated && loggedUserId !== _id ) && <button onClick={()=>{dispatch(followOrUnfollow(_id))}} style={{"border":"1px solid #fff"}} className={`btn ${!isFollowed? 'btn-success': 'btn-danger'}`}>{isFollowed? 'Unfollow': 'Follow'}</button>}
       <div className="icons my-1">
       
         { website && (

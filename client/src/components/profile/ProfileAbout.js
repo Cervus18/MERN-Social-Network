@@ -6,7 +6,7 @@ const ProfileAbout = ({profile: {
     user: {name}
 }}) => {
   return (
-  <div className="profile-about bg-light p-2">
+  <div  className="profile-about bg-light p-2" style={{"borderRadius":"8px","boxShadow":"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
     {bio && (
     <Fragment>
         <h2 className="text-primary">{name.trim().split(' ')[0]}'s Bio</h2>

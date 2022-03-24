@@ -28,7 +28,7 @@ const AddEducation = ({addEducation, history}) => {
         <i className="fas fa-code-branch"></i> Add any school or bootcamp that you have attended
         positions that you have had in the past
       </p>
-      <small>* = required field</small>
+      <small style={{"color":"red"}}>* = required field</small>
       <form className="form" onSubmit={e => {
           e.preventDefault()
           addEducation(formData, history)
@@ -66,8 +66,8 @@ const AddEducation = ({addEducation, history}) => {
             onChange={e => onChange(e)}
           ></textarea>
         </div>
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+        <input type="submit" value="Save" className="btn btn-primary my-1" />
+        <Link className="btn btn-light my-1" to="/dashboard"  style={{"background":"#03854929" , "border":"1px solid #038521", "color":"#038521"}}>Go Back</Link>
       </form>
     </Fragment>
   )

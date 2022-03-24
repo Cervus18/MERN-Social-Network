@@ -373,7 +373,11 @@ router.get('/followings/',auth, async (req, res) => {
 
   try {
     const profile =await  Profile.findOne({user: req.user.id})
-    res.json(profile.followings)
+    let followings = [...profile.followings]
+    let user1 = await User.findOne({_id:req.user.id})
+    let user={user: user1._id, _id: user1._id}
+    followings.push(user)
+    res.json(followings)
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ msg: 'Server error' });

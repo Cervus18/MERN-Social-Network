@@ -84,10 +84,24 @@ router.post('/edit-profile-pic',auth, async (req,res) => {
     const fileStr = req.body.data
     try {
         
+        const user = await User.findById(req.user.id)
+        
+        const avatar = user.avatar
+        
+        
+        if(avatar){
+            //delete previous avatar from cloudinary 
+            cloudinary.v2.uploader.destroy(avatar.public_id);
+            
+        }
+        //upload new avatar to cloudinary
         const uploadedResponse = await cloudinary.v2.uploader.upload(fileStr, {folder: 'profile_pics'})
-        const user = await User.findOneAndUpdate({_id: req.user.id},{avatar: uploadedResponse.url},{new: true})
-        const userPosts =await  Post.find({user: req.user._id})
-        console.log(userPosts)
+       
+        user.avatar = {url: uploadedResponse.url, public_id: uploadedResponse.public_id}
+        user.save()
+
+        // const userPosts =await  Post.find({user: req.user._id})
+        //console.log(userPosts)
 
         res.json(user)
     } catch (error) {
@@ -98,3 +112,4 @@ router.post('/edit-profile-pic',auth, async (req,res) => {
 })
 
 module.exports = router
+

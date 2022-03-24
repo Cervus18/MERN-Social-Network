@@ -44,7 +44,7 @@ const App = () => {
         <Route exact path="/" component={Landing} />
         <section className="container">
           <Alert/>
-          <div className="friends"></div>
+          {/*<div className="friends"></div>*/}
           <Switch>
 
             <Route exact path="/register" component={Register} />
