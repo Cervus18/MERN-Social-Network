@@ -555,6 +555,7 @@ button {
 .modal{
   width:43%;
   padding:8px 20px;
+  padding-bottom: 20px;
   background-color: #fff;
   border-radius: 15px;
   margin: auto;
@@ -937,3 +938,10 @@ button {
   color: #d32e5d
 }
 
+.delete-prompt {
+  height:100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

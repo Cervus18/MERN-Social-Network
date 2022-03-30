@@ -1,0 +1,144 @@
+.messenger {
+    
+    height: calc(92vh );
+    display: flex;
+    position: fixed;
+    bottom:0;
+    width:100%;
+  }
+
+
+  
+  .chatMenu {
+    flex: 3.5;
+   background-color: #fff;
+   border-right: 1px solid rgb(224, 224, 224);
+  }
+  
+  .chatMenuInput {
+    width: 90%;
+    padding: 10px 0;
+    border: none;
+    border: 1px solid gray;
+    outline: none;
+    border-radius: 30px;
+    padding:5px 10px;
+    background-color: rgb(250, 250, 250);
+  }
+  
+  .chatBox {
+    flex: 5.5;
+    border-right: 1px solid rgb(224, 224, 224);
+  }
+  
+  .chatBoxWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .chatBoxTop {
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 10px;
+  }
+  
+  .chatBoxBottom {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .chatMessageInput {
+    width: 80%;
+    height: 90px;
+    padding: 10px;
+  }
+  
+  .chatSubmitButton {
+    width: 70px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+  }
+  
+  .chatOnline {
+    flex: 3;
+    background-color: #fff;
+  }
+  
+  .chatMenuWrapper,
+  .chatBoxWrapper,
+  .chatOnlineWrapper {
+    padding: 10px;
+    height: 100%;
+  }
+  
+  .noConversationText {
+    position: absolute;
+    top: 10%;
+    font-size: 50px;
+    color: rgb(224, 220, 220);
+    cursor: default;
+  }
+  
+
+  .btn-primary-v2-msg{
+    background-color:#70b5f933;
+    border: 1px solid #0a66c2;
+    color: #0a66c2;
+    padding:5px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+
+  .chatBoxBottom textarea{
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #ccc
+  }
+
+
+  .no-chat{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .no-chat p {
+    color: rgb(189, 189, 189);
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 100px;
+   
+  }
+
+  .no-chat i {
+    color: rgb(211, 211, 211);
+    font-size: 190px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .chatMenu {
+      flex: 1;
+    }
+  
+    .chatMenuInput {
+      display: none;
+    }
+  
+    .chatBox{
+      flex: 10;
+    }
+  
+    .chatOnline{
+      flex: 1px;
+    }
+}

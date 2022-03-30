@@ -25,7 +25,7 @@ const  ProfileTop = ({profile:{
       
       <img
         className="round-img my-1"
-        src={avatar? avatar: defaultAvatar}
+        src={avatar? avatar.url: defaultAvatar}
         alt=""
       />
      

@@ -21,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.0",
     "request": "^2.88.2",
+    "timeago.js": "^4.0.0-beta.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

@@ -8,7 +8,9 @@ import Modal from '../../components/layout/Modal'
 
 const PostItem = ({auth,addLike, removeLike, deletePost, post: {_id, text,emoji,image, name, avatar, user, likes, comments, date}, showActions}) => {
 
-  const [showModal,setShowModal]=useState(false)
+  const [showImageModal,setShowImageModal]=useState(false)
+  const [showDelete,setShowDeleteModal]=useState(false)
+
   return (
     <div className="post bg-white p-1 my-1">
     <div>
@@ -32,8 +34,8 @@ const PostItem = ({auth,addLike, removeLike, deletePost, post: {_id, text,emoji,
       <p className="my-1">
         {text}
       </p>
-      {image && <img onClick={()=>setShowModal(true)} src={image.url} style={{"width":"200px", "border":"1px solid #ccc","borderRadius":"8px","display":"block","marginBottom":"17px"}}/>}
-      {showModal && <Modal isOpen={setShowModal}><img src={image.url} style={{"width":"100%"}}/></Modal>}
+      {image && <img onClick={()=>setShowImageModal(true)} src={image.url} style={{"width":"200px", "border":"1px solid #ccc","borderRadius":"8px","display":"block","marginBottom":"17px"}}/>}
+      {showImageModal && <Modal isOpen={setShowImageModal}><img src={image.url} style={{"width":"100%"}}/></Modal>}
      
     {showActions && <Fragment>
       <button onClick={ () => addLike(_id)} className="btn" style={{"background":"#03854929" , "border":"1px solid #038521", "color":"#038521"}}>
@@ -50,12 +52,13 @@ const PostItem = ({auth,addLike, removeLike, deletePost, post: {_id, text,emoji,
     </Link>
     {!auth.loading && user === auth.user._id &&(
         <button
-         onClick={()=> deletePost(_id)}      
+         onClick={()=> setShowDeleteModal(true)}      
          type="button"
          className="btn btn-danger">
          <i className="fas fa-trash"></i>
        </button>
     )}
+    {showDelete && <Modal isOpen={setShowDeleteModal} ><div className='delete-prompt'><strong><p>Are you sure you  want to delete this post?</p></strong> <div><button className='btn btn-danger-v2' onClick={()=>deletePost(_id)}>Yes</button> <button className="btn btn-success-v2" onClick={()=>setShowDeleteModal(false)}>Cancel</button> </div></div></Modal>}
       </Fragment>}
    
     </div>
